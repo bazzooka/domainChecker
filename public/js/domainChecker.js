@@ -5,11 +5,15 @@ var testDomain = function(val){
 
 	var request = new XMLHttpRequest();
 	request.open('GET', '/availability/'+val, true);
+	document.getElementById('icon-check').classList.add('hidden');
+	document.getElementById('spinner').classList.remove('hidden');
 
 	request.onload = function() {
   		if (request.status >= 200 && request.status < 400) {
     		// Success!
     		var resp = request.responseText;
+    		document.getElementById('icon-check').classList.remove('hidden');
+    		document.getElementById('spinner').classList.add('hidden');
     		if(resp == "true"){
     			document.getElementById('icon-check').classList.remove("cancel");
     			document.getElementById('icon-check').classList.add("check");
