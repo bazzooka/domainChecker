@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DOMAIN CHECKER</title>
+</head>
+<body>
+	<div class="mdl-layout__container">
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header is-upgraded is-small-screen">
+			<header class="mdl-layout__header">
+		    	<div class="mdl-layout__header-row">
+		      		<!-- Add spacer, to align navigation to the right -->
+		      		<div class="mdl-layout-spacer"></div>
+		      		<!-- Title -->
+		      		<span class="mdl-layout-title">DOMAIN CHECKER</span>
+		      		<!-- Add spacer, to align navigation to the left -->
+		      		<div class="mdl-layout-spacer"></div>
+		    	</div>
+		  </header>
+		 <div class="demo-grid-ruler mdl-grid" style="text-align:center;">
+  			PLEASE ENTER THE DOMAIN NAME WITHOUT www or extension (.fr...)
+  		</div>
+  		<div class="mdl-grid">
+  			<div class="mdl-cell mdl-cell--6-col">
+	  			<form action="#">
+	  				<div class="mdl-textfield mdl-js-textfield textfield-demo">
+				    	<input class="mdl-textfield__input" id="input_domain" type="text" id="domain" />
+				    	<label class="mdl-textfield__label" for="domain">Domaine (ex: google)</label>
+				  	</div>
+				</form>
+			</div>
+			<div class="mdl-cell mdl-cell--4-col">
+	  			<button id="btn_tester" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+					Tester
+				</button>
+			</div>
+			<div class="mdl-cell mdl-cell--2-col">
+				<div id="icon-check" class="icon cancel"></div>
+			</div>
+		</div>
+		
+	</div>
+
+	<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.indigo-pink.min.css">
+<script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="/js/domainChecker.js"></script>
+<style>
+	.check{
+		background-image: url('assets/ic_check_48px.svg');
+		background-repeat: no-repeat;
+		height: 48px;
+	}
+
+	.cancel{
+		background-image: url('assets/ic_cancel_48px.svg');
+		background-repeat: no-repeat;
+		height: 48px;
+	}
+
+	.icon{
+		margin: 0;
+	}
+</style>
+</body>
+</html>
