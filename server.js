@@ -1,4 +1,4 @@
-var dns = require('dns'),
+var whois = require('node-whois'),
 	async = require('async'),
 	express = require('express'),
 	app = express(),
@@ -6,15 +6,14 @@ var dns = require('dns'),
 
 var extensions = ['.com', '.fr'];
 
-
 function checkAvailability(name, generalCallback) {
 	var resultats = [];
 	async.each(extensions, function(extension, callback){
 		if(extension){
 			console.log("Check ", name + extension);
-			dns.resolve4(name + extension, function(err, address){
-				if(err){
-					resultats.push(extension);	
+			whois.lookup(name+extension, function(err, data) {
+				if(data && data.indexOf("No entries found") >=0 || data && data.indexOf('No match for domain') >= 0){
+					resultats.push(extension);
 				}
 				callback(null, true);	
 			});
@@ -22,10 +21,10 @@ function checkAvailability(name, generalCallback) {
 		
 	}, function(err){
 		if(err){
-			console.log(err);
 			return true;
 		}
-		if(resultats.length === 0){
+		console.log('Length', resultats);
+		if(resultats.length !== extensions.length){
 			generalCallback(false);
 			console.log("Not Available");
 		} else {
@@ -34,7 +33,12 @@ function checkAvailability(name, generalCallback) {
 		}
 
 	});
-}
+	
+
+};
+
+// checkAvailability("omegasolutionss");
+
 
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 
