@@ -34,12 +34,20 @@ var testDomain = function(val){
 	request.send();
 }
 
-document.getElementById("btn_tester").addEventListener("click", function(){
+var preProcessValue = function(){
 	var val = document.getElementById('input_domain').value;
 	if(!val || val === ''){
-		alert("Please enter a value.");
+		alert("Please enter a value."); 
 	} else {
 		testDomain(val);
 	}
-	testDomain()
-})
+}
+
+document.getElementById("btn_tester").addEventListener("click", function(){
+	preProcessValue();
+});
+
+document.getElementsByTagName('form')[0].addEventListener("submit", function(e){
+	preProcessValue();
+	e.preventDefault();
+});
